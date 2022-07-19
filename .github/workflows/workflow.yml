@@ -7,8 +7,8 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest,
-          - windows-latest,
+          - ubuntu-latest
+          - windows-latest
           - macos-latest
 
         version:
@@ -29,16 +29,14 @@ jobs:
 
     - name: get npm cache directory
       id: npm-cache-dir
-      run: |
-        echo "::set-output name=dir::$(npm config get cache)"
+      run: echo "::set-output name=dir::$(npm config get cache)"
 
     - uses: actions/cache@v3
       id: npm-cache
       with:
         path: ${{ steps.npm-cache-dir.outputs.dir }}
         key: ${{ runner.os }}-node-${{ matrix.version }}-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-${{ matrix.version }}
+        restore-keys: ${{ runner.os }}-node-${{ matrix.version }}
 
     # ----------------------------------------------------------------------------------------------
 
@@ -72,16 +70,14 @@ jobs:
 
     - name: get npm cache directory
       id: npm-cache-dir
-      run: |
-        echo "::set-output name=dir::$(npm config get cache)"
+      run: echo "::set-output name=dir::$(npm config get cache)"
 
     - uses: actions/cache@v3
       id: npm-cache
       with:
         path: ${{ steps.npm-cache-dir.outputs.dir }}
         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node
+        restore-keys: ${{ runner.os }}-node
 
     # ----------------------------------------------------------------------------------------------
 
