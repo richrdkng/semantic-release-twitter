@@ -1,0 +1,52 @@
+{
+  "name": "semantic-release-twitter",
+  "description": "semantic-release plugin to post release updates on Twitter.",
+  "version": "0.0.0-development",
+  "author": "Richard King <richrdkng@gmail.com> (https://www.richrdkng.com/)",
+  "license": "MIT",
+  "files": [
+    "lib",
+    "index.js"
+  ],
+  "main": "index.js",
+  "homepage": "https://github.com/richrdkng/semantic-release-twitter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richrdkng/semantic-release-twitter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/richrdkng/semantic-release-twitter/issues"
+  },
+  "engines": {
+    "node": ">=14.17"
+  },
+  "ava": {
+    "files": [
+      "test/**/*.test.js"
+    ]
+  },
+  "keywords": [
+    "twitter",
+    "release",
+    "semantic-release",
+    "version"
+  ],
+  "scripts": {
+    "test": "ava",
+    "lint": "echo \"LINT\""
+  },
+  "peerDependencies": {
+    "semantic-release": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "ava": "^4.3.1",
+    "semantic-release": "^19.0.3"
+  },
+  "dependencies": {
+    "@semantic-release/error": "^3.0.0",
+    "aggregate-error": "^3.0.0",
+    "twitter-api-v2": "^1.12.3"
+  }
+}

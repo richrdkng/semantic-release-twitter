@@ -1,0 +1,98 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest,
+          - windows-latest,
+          - macos-latest
+
+        version:
+          - 14.17
+          - 16
+          - 18
+
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.version }}
+
+    # ----------------------------------------------------------------------------------------------
+
+    - name: get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+
+    - uses: actions/cache@v3
+      id: npm-cache
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ matrix.version }}-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-${{ matrix.version }}
+
+    # ----------------------------------------------------------------------------------------------
+
+    - name: init
+      run: npm ci
+
+    - name: check deps
+      run: npx --yes ls-engines
+
+    - name: lint
+      run: npm run lint
+
+    - name: test
+      run: npm test
+
+  # ------------------------------------------------------------------------------------------------
+
+  release:
+    needs: test
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
+
+    # ----------------------------------------------------------------------------------------------
+
+    - name: get npm cache directory
+      id: npm-cache-dir
+      run: |
+        echo "::set-output name=dir::$(npm config get cache)"
+
+    - uses: actions/cache@v3
+      id: npm-cache
+      with:
+        path: ${{ steps.npm-cache-dir.outputs.dir }}
+        key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node
+
+    # ----------------------------------------------------------------------------------------------
+
+    - name: init
+      run: npm ci
+
+    - name: release
+      run: npx semantic-release
+
+    # ----------------------------------------------------------------------------------------------
+
+    env:
+      GH_TOKEN:  ${{ secrets.GH_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
