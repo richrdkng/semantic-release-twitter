@@ -46,7 +46,7 @@ jobs:
       run: npm ci
 
     - name: check deps
-      run: npx --yes ls-engines
+      run: npx ls-engines
 
     - name: lint
       run: npm run lint
