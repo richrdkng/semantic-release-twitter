@@ -76,7 +76,7 @@ async function publish(pluginConfig, context) {
     prepared = true
   }
 
-  return _publish(pluginConfig, context)
+  await _publish(pluginConfig, context)
 }
 
 // -----------------------------------------------------------------------------
