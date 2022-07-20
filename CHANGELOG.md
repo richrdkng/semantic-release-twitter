@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/richrdkng/semantic-release-twitter/compare/v1.1.1...v1.1.2) (2022-07-20)
+
+
+### Bug Fixes
+
+* trigger release ([0440671](https://github.com/richrdkng/semantic-release-twitter/commit/044067131d5a4c08e8aa5634555d9a9c7eb36412))
+
 ## [1.1.1](https://github.com/richrdkng/semantic-release-twitter/compare/v1.1.0...v1.1.1) (2022-07-20)
 
 
