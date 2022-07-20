@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/richrdkng/semantic-release-twitter/compare/v1.1.0...v1.1.1) (2022-07-20)
+
+
+### Bug Fixes
+
+* fix publish step error ([6eed1a7](https://github.com/richrdkng/semantic-release-twitter/commit/6eed1a776d91f86b9f34bffc149d3be1ef809404))
+
 # [1.1.0](https://github.com/richrdkng/semantic-release-twitter/compare/v1.0.0...v1.1.0) (2022-07-20)
 
 
