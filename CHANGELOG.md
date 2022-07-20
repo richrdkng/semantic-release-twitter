@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/richrdkng/semantic-release-twitter/compare/v1.1.2...v1.1.3) (2022-07-20)
+
+
+### Bug Fixes
+
+* fix missing resolve-config in publish module ([01f645d](https://github.com/richrdkng/semantic-release-twitter/commit/01f645d18f07860adacc9d9b2100e57116c48328))
+
 ## [1.1.2](https://github.com/richrdkng/semantic-release-twitter/compare/v1.1.1...v1.1.2) (2022-07-20)
 
 
