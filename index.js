@@ -1,7 +1,7 @@
 const AggregateError = require('aggregate-error')
 
 const _verifyConfig = require('./lib/verify-config')
-const _verifyAuth   = require('./lib/verify-auth')
+const _verifyAuth   = require('./lib/utils/verify-auth')
 const _prepare      = require('./lib/prepare')
 const _publish      = require('./lib/publish')
 
@@ -83,6 +83,23 @@ async function publish(pluginConfig, context) {
 
 module.exports = {
   verifyConditions,
+
+  analyzeCommits: (pluginConfig, context) => {
+    console.log('analyzeCommits ------------------------------------------------')
+    console.dir(pluginConfig, { depth: 5 })
+    console.log('---------------------------------------------------------------')
+    console.dir(context, { depth: 5 })
+    console.log('---------------------------------------------------------------')
+  },
+
+  generateNotes: (pluginConfig, context) => {
+    console.log('generateNotes -------------------------------------------------')
+    console.dir(pluginConfig, { depth: 5 })
+    console.log('---------------------------------------------------------------')
+    console.dir(context, { depth: 5 })
+    console.log('---------------------------------------------------------------')
+  },
+
   prepare,
   publish,
 }
