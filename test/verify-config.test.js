@@ -1,6 +1,6 @@
 const test = require('ava')
 
-const verify = require('../lib/verify-config.js')
+const verify = require('../lib/utils/verify-config.js')
 
 const TWITTER_API_KEY             = { TWITTER_API_KEY:             'api_key'             }
 const TWITTER_API_SECRET_KEY      = { TWITTER_API_SECRET_KEY:      'api_secret_key'      }

@@ -1,7 +1,8 @@
 const AggregateError = require('aggregate-error')
 
-const _verifyConfig = require('./lib/verify-config')
+const _verifyConfig = require('./lib/utils/verify-config')
 const _verifyAuth   = require('./lib/utils/verify-auth')
+
 const _prepare      = require('./lib/prepare')
 const _publish      = require('./lib/publish')
 
