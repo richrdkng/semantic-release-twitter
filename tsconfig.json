@@ -1,0 +1,35 @@
+{
+  "extends": "ts-node/node14/tsconfig.json",
+
+  "ts-node": {
+    "require": ["tsconfig-paths/register"],
+    "files": true
+  },
+
+  "compilerOptions": {
+    "resolveJsonModule": true,
+
+    "rootDir": ".",
+    "baseUrl": ".",
+
+    "paths": {
+      "@errors":   ["src/errors"],
+      "@errors/*": ["src/errors/*"],
+
+      "@types":   ["src/types"],
+      "@types/*": ["src/types/*"],
+
+      "@utils":   ["src/utils"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+
+  "include": [
+    "src",
+    "global.d.ts"
+  ],
+
+  "exclude": [
+    "node_modules"
+  ]
+}

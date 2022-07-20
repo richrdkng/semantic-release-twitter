@@ -1,7 +1,16 @@
-const { TwitterApi } = require('twitter-api-v2')
+import { TwitterApi } from "twitter-api-v2"
 
-class Twitter {
-  constructor (options) {
+type Options = {
+  appKey:       string
+  appSecret:    string
+  accessToken:  string
+  accessSecret: string
+}
+
+export class Twitter {
+  private _client: TwitterApi
+
+  constructor (options: Options) {
     this._client = new TwitterApi({
       appKey:       options?.appKey       ?? '*',
       appSecret:    options?.appSecret    ?? '*',
@@ -11,8 +20,27 @@ class Twitter {
   }
 
   async verifyAuth () {
+    return this._auth()
+  }
+
+  async postTweet (message: string) {
+    if (message.length > 280) {
+      message = message.substring(0, 280)
+    }
+
+    console.log('message length:', message.length)
+    console.log(`message: "${message}"`)
+
+    const result = await this._client.v2.tweet({
+      text: message,
+    })
+
+    console.log(result)
+  }
+
+  private async _auth () {
     let success = false
-    let error
+    let error: any
 
     let errorCode    = 200
     let errorMessage = ''
@@ -22,7 +50,7 @@ class Twitter {
       await this._client.v2.me()
       success = true
 
-    } catch (e) {
+    } catch (e: any) {
       success      = false
       error        = e
       errorCode    = e.code
@@ -38,22 +66,4 @@ class Twitter {
       errorData,
     }
   }
-
-  async postTweet (message) {
-    if (message.length > 280) {
-      message = message.substring(0, 280)
-    }
-
-    console.log('message length:', message.length)
-    console.log(`message: "${message}"`)
-
-    const result = await this._client.v2.tweet({
-      text: message,
-    })
-
-    console.log(result)
-  }
-
 }
-
-module.exports = Twitter

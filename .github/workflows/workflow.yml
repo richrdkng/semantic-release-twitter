@@ -85,6 +85,9 @@ jobs:
     - name: init
       run: npm ci
 
+    - name: prep
+      run: npm run prep
+
     - name: release
       run: npx semantic-release
 

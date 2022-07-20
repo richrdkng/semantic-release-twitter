@@ -65,7 +65,3 @@ typings/
 .build
 .deploy
 .dist
-
-# gatsby-related
-public
-gatsby-types.d.ts
