@@ -11,9 +11,7 @@ module.exports = {
       pkgRoot: '.dist',
     }],
     ['@semantic-release/git', {
-      assets: [
-        'CHANGELOG*',
-      ],
+      assets: 'CHANGELOG*',
     }],
   ],
 }
